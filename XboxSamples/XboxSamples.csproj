@@ -167,6 +167,12 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XboxHelpers\XboxHelpers.csproj">
+      <Project>{957da56b-c407-4b77-aa5c-9abee84dc1fc}</Project>
+      <Name>XboxHelpers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

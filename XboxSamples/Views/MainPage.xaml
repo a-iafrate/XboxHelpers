@@ -7,6 +7,7 @@
       xmlns:controls="using:Template10.Controls"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:local="using:XboxSamples.Views"
+      xmlns:triggers="using:XboxHelpers.Triggers"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
        mc:Ignorable="d">
 
@@ -15,6 +16,42 @@
     <RelativePanel Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
         <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="DeviceFamilyStateGroud">
+
+                <VisualState>
+
+                    <VisualState.StateTriggers>
+
+                        <triggers:DeviceFamilyTrigger DeviceFamily="Windows.Xbox"/>
+
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+
+                        <Setter Target="tb.Background" Value="Red"/>
+
+                    </VisualState.Setters>
+
+                </VisualState>
+                <VisualState>
+
+                    <VisualState.StateTriggers>
+
+                        <triggers:DeviceFamilyTrigger DeviceFamily="Windows.Desktop"/>
+
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+
+                        <Setter Target="tb.Background" Value="Green"/>
+
+                    </VisualState.Setters>
+
+                </VisualState>
+
+            </VisualStateGroup>
+
+
             <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
                 <VisualState x:Name="VisualStateNarrow">
                     <VisualState.StateTriggers>
@@ -58,7 +95,7 @@
                           RelativePanel.AlignLeftWithPanel="True"
                           RelativePanel.Below="pageHeader">
 
-            <TextBox MinWidth="150" MinHeight="62"
+            <TextBox x:Name="tb" MinWidth="150" MinHeight="62"
                      Header="Parameter to pass"
                      Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                      TextWrapping="Wrap">
