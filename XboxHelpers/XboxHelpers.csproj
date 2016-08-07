@@ -107,6 +107,7 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Utility.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Triggers\DeviceFamilyTrigger.cs" />
     <EmbeddedResource Include="Properties\XboxHelpers.rd.xml" />

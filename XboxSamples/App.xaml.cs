@@ -20,7 +20,7 @@ namespace XboxSamples
         {
             InitializeComponent();
             // Disable mouse control
-            //this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
+            this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
             SplashFactory = (e) => new Views.Splash(e);
 
             #region App settings
