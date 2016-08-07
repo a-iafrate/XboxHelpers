@@ -67,16 +67,16 @@
                         <ToggleSwitch x:Name="RemoveSafeArea"
                                       Header="Remove safe area"
                                       
-                                      OffContent="No safe area"
-                                      OnContent="Safe area"
+                                      OnContent="No safe area"
+                                      OffContent="Safe area"
                                       RelativePanel.AlignLeftWithPanel="True"
-                                      RelativePanel.AlignTopWithPanel="True" />
+                                      RelativePanel.AlignTopWithPanel="True" Toggled="RemoveSafeArea_Toggled" />
 
                         <ToggleSwitch x:Name="UseMouseMode" Header="Use Mouse Mode"
                                       
                                       OffContent="XY mode" OnContent="Mouse mode"
                                       RelativePanel.AlignLeftWithPanel="True"
-                                      RelativePanel.Below="RemoveSafeArea" />
+                                      RelativePanel.Below="RemoveSafeArea" Toggled="UseMouseMode_Toggled" />
 
                       
 

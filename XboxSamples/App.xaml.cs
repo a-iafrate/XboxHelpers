@@ -7,6 +7,9 @@ using Template10.Common;
 using System;
 using System.Linq;
 using Windows.UI.Xaml.Data;
+using XboxSamples.Views;
+using Windows.Storage;
+using XboxHelpers.Common;
 
 namespace XboxSamples
 {
@@ -16,11 +19,22 @@ namespace XboxSamples
     [Bindable]
     sealed partial class App : Template10.Common.BootStrapper
     {
+        ApplicationDataContainer settings = Windows.Storage.ApplicationData.Current.LocalSettings;
         public App()
         {
             InitializeComponent();
+
+            Object UseMouseMode = settings.Values["UseMouseMode"];
+
+
+
             // Disable mouse control
-            this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
+            if(UseMouseMode!=null && (bool)UseMouseMode==true)
+            Utility.setMouseMode(Application.Current);
+            else
+                Utility.setXYMode(Application.Current);
+
+            //this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
             SplashFactory = (e) => new Views.Splash(e);
 
             #region App settings
@@ -54,7 +68,16 @@ namespace XboxSamples
         public override async Task OnStartAsync(StartKind startKind, IActivatedEventArgs args)
         {
             //Remove safe area
-            Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+            // 
+
+            Object RemoveSafeArea = settings.Values["RemoveSafeArea"];
+
+
+
+            // Disable mouse control
+            if (RemoveSafeArea != null && (bool)RemoveSafeArea == true)
+                Utility.removeSafeArea();
+            
 
             // long-running startup tasks go here
             await Task.Delay(5000);

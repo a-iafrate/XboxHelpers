@@ -1,7 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using Windows.Storage;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Navigation;
+using XboxHelpers.Common;
 
 namespace XboxSamples.Views
 {
@@ -9,6 +12,9 @@ namespace XboxSamples.Views
     {
         Template10.Services.SerializationService.ISerializationService _SerializationService;
 
+
+        ApplicationDataContainer settings = Windows.Storage.ApplicationData.Current.LocalSettings;
+        bool init = false;
         public SettingsPage()
         {
             InitializeComponent();
@@ -17,8 +23,16 @@ namespace XboxSamples.Views
 
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
+            init = true;
             var index = int.Parse(_SerializationService.Deserialize(e.Parameter?.ToString()).ToString());
             MyPivot.SelectedIndex = index;
+            UseMouseMode.IsOn = Utility.isMouseMode(Application.Current);
+
+            Object rsa = settings.Values["RemoveSafeArea"];
+            if (rsa != null && (bool)rsa == true)
+                RemoveSafeArea.IsOn = true;
+            init = false;
+
         }
 
         public Uri Logo => Windows.ApplicationModel.Package.Current.Logo;
@@ -36,5 +50,44 @@ namespace XboxSamples.Views
             }
         }
 
+        private void RemoveSafeArea_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (init)
+                return;
+            settings.Values["RemoveSafeArea"] = RemoveSafeArea.IsOn;
+            CloseApp();
+        }
+
+        private void UseMouseMode_Toggled(object sender, Windows.UI.Xaml.RoutedEventArgs e)
+        {
+            if (init)
+                return;
+            settings.Values["UseMouseMode"] = UseMouseMode.IsOn;
+            CloseApp();
+            
+        }
+
+        public async void CloseApp()
+        {
+            var dialog = new Windows.UI.Popups.MessageDialog(
+"Close app for apply this changes?",
+"Question");
+
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("Yes") { Id = 0 });
+            dialog.Commands.Add(new Windows.UI.Popups.UICommand("No") { Id = 1 });
+
+            if (Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily != "Windows.Mobile")
+            {
+                // Adding a 3rd command will crash the app when running on Mobile !!!
+                dialog.Commands.Add(new Windows.UI.Popups.UICommand("Maybe later") { Id = 2 });
+            }
+
+            dialog.DefaultCommandIndex = 0;
+            dialog.CancelCommandIndex = 1;
+
+            var result = await dialog.ShowAsync();
+            if((int)result.Id==0)
+                Application.Current.Exit();
+        }
     }
 }

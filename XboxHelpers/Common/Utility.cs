@@ -51,7 +51,10 @@ namespace XboxHelpers.Common
 
         }
 
-       
+       public static void removeSafeArea()
+        {
+            Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+        }
 
     }
 }
