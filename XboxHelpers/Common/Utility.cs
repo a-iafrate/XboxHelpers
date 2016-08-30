@@ -43,6 +43,8 @@ namespace XboxHelpers.Common
             
         }
 
+
+
         public static bool isXbox(Application app)
         {
 

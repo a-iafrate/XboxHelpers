@@ -6,6 +6,7 @@ using Template10.Services.NavigationService;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using XboxHelpers.Common;
 
 namespace XboxSamples.Views
 {
@@ -18,6 +19,9 @@ namespace XboxSamples.Views
         {
             Instance = this;
             InitializeComponent();
+
+            if (Utility.isXbox(Application.Current))
+                this.RequestedTheme = ElementTheme.Dark;
         }
 
         public Shell(INavigationService navigationService) : this()

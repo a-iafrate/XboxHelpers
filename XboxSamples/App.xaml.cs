@@ -26,7 +26,7 @@ namespace XboxSamples
 
             Object UseMouseMode = settings.Values["UseMouseMode"];
 
-
+           
 
             // Disable mouse control
             if(UseMouseMode!=null && (bool)UseMouseMode==true)

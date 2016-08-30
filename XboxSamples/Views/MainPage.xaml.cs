@@ -19,8 +19,8 @@ namespace XboxSamples.Views
         {
             InitializeComponent();
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
-
-           // stateSystem.Text = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
+            
+            // stateSystem.Text = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)
