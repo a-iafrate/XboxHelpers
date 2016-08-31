@@ -90,6 +90,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="Assets\music\playlist.json" />
     <None Include="XboxSamples_TemporaryKey.pfx" />
     <None Include="project.json" />
   </ItemGroup>
@@ -121,6 +122,11 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\music\Ring01.wma" />
+    <Content Include="Assets\music\Ring02.wma" />
+    <Content Include="Assets\music\Ring03Part1.wma" />
+    <Content Include="Assets\music\Ring03Part2.wma" />
+    <Content Include="Assets\music\Ring03Part3.wma" />
     <Content Include="Help.htm" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />

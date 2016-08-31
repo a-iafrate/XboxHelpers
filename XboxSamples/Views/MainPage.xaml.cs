@@ -10,6 +10,9 @@ using Windows.UI.Core;
 using Windows.Media.Capture;
 using Windows.System;
 using System.Diagnostics;
+using Windows.Media.Core;
+using Windows.Media.Playback;
+
 
 namespace XboxSamples.Views
 {
@@ -21,6 +24,34 @@ namespace XboxSamples.Views
             NavigationCacheMode = Windows.UI.Xaml.Navigation.NavigationCacheMode.Enabled;
             
             // stateSystem.Text = Windows.System.Profile.AnalyticsInfo.VersionInfo.DeviceFamily;
+
+            loadMusic();
+        }
+
+
+        private async void loadMusic()
+        {
+            var uri = new Uri("ms-appx:///Assets/music/Ring01.wma");
+          StorageFile sf= await Windows.Storage.StorageFile.GetFileFromApplicationUriAsync(uri);
+
+
+
+
+
+           MediaSource mediaSource = MediaSource.CreateFromStorageFile(sf);
+            mediaPlayerElement.Source=mediaSource;
+            mediaPlayerElement.MediaPlayer.MediaEnded += MediaPlayer_MediaEnded;
+        }
+
+        private async void MediaPlayer_MediaEnded(MediaPlayer sender, object args)
+        {
+           await Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                
+            
+            mediaPlayerElement.MediaPlayer.PlaybackSession.Position = new TimeSpan(0);
+            mediaPlayerElement.MediaPlayer.Play();
+            });
         }
 
         private void submitButton_Click(object sender, RoutedEventArgs e)

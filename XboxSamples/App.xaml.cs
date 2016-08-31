@@ -35,7 +35,7 @@ namespace XboxSamples
                 Utility.setXYMode(Application.Current);
 
             //this.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.WhenRequested;
-            SplashFactory = (e) => new Views.Splash(e);
+            //SplashFactory = (e) => new Views.Splash(e);
 
             #region App settings
 

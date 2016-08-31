@@ -33,6 +33,11 @@ namespace XboxSamples.Views
         {
             MyHamburgerMenu.NavigationService = navigationService;
         }
+
+        private void HamburgerButtonInfo_Selected(object sender, RoutedEventArgs e)
+        {
+            ElementSoundPlayer.Play(ElementSoundKind.Invoke);
+        }
     }
 }
 
