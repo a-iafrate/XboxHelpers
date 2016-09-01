@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
 using XboxHelpers.Common;
 
@@ -19,6 +20,9 @@ namespace XboxSamples.Views
         {
             InitializeComponent();
             _SerializationService = Template10.Services.SerializationService.SerializationService.Json;
+
+            version.Text = Version;
+            logo.Source = new BitmapImage(Logo);
         }
 
         protected override void OnNavigatedTo(NavigationEventArgs e)

@@ -115,7 +115,7 @@
             RelativePanel.Below="parameterResizer" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="128" Margin="0,10,0,0" Click="button3_Click"/>
             <TextBlock Margin="0,16,0,16" Text="Background music" Style="{StaticResource SubheaderTextBlockStyle}" />
             <MediaPlayerElement x:Name="mediaPlayerElement" AreTransportControlsEnabled="True" MaxWidth="400" MaxHeight="400"
-                                />
+                               HorizontalAlignment="Left" />
 
         </StackPanel>
     </StackPanel>

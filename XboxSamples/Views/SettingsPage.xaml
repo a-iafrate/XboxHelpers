@@ -90,7 +90,7 @@
         
             <!--  about  -->
             <PivotItem Header="About">
-                <RelativePanel DataContext="{Binding AboutPartViewModel}">
+                <RelativePanel >
 
                     <Border x:Name="LogoImage" HorizontalAlignment="Right"
                             VerticalAlignment="Top" BorderBrush="DimGray"
@@ -100,7 +100,7 @@
                         <Border.Background>
                             <SolidColorBrush Color="{ThemeResource SystemAccentColor}" />
                         </Border.Background>
-                        <Image Margin="12" Source="{Binding Logo}"
+                        <Image Margin="12" x:Name="logo"
                                Stretch="None" />
                     </Border>
 
@@ -119,7 +119,7 @@
                                RelativePanel.AlignLeftWithPanel="True"
                                RelativePanel.Below="PublisherTextBlock">
                         <Run>Version</Run>
-                        <Run Text="{Binding Version}" />
+                        <Run x:Name="version" Text="{Binding Version}" />
                     </TextBlock>
 
                 </RelativePanel>
