@@ -29,7 +29,7 @@
 
                     <VisualState.Setters>
 
-                        <Setter Target="tb.Background" Value="Red"/>
+                        <Setter Target="deviceName.Text" Value="Running on Xbox"/>
 
                     </VisualState.Setters>
 
@@ -44,7 +44,7 @@
 
                     <VisualState.Setters>
 
-                        <Setter Target="tb.Background" Value="Green"/>
+                        <Setter Target="deviceName.Text" Value="Running on desktop"/>
 
                     </VisualState.Setters>
 
@@ -53,35 +53,7 @@
             </VisualStateGroup>
 
 
-            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
-                <VisualState x:Name="VisualStateNarrow">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--  TODO: change properties for narrow view  -->
-                        <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="VisualStateNormal">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--  TODO: change properties for normal view  -->
-                        <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
-                    </VisualState.Setters>
-                </VisualState>
-                <VisualState x:Name="VisualStateWide">
-                    <VisualState.StateTriggers>
-                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
-                    </VisualState.StateTriggers>
-                    <VisualState.Setters>
-                        <!--  TODO: change properties for wide view  -->
-                        <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
+           
         </VisualStateManager.VisualStateGroups>
 
         <controls:PageHeader x:Name="pageHeader" RelativePanel.AlignLeftWithPanel="True"
@@ -94,19 +66,10 @@
         <StackPanel RelativePanel.Below="stateTextBox" Margin="16">
 
 
-            <TextBox x:Name="tb" Width="150" MinHeight="62" HorizontalAlignment="Left"
-                     Header="Parameter to pass"
-                     Text="{Binding Value, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
-                     TextWrapping="Wrap">
-            </TextBox>
 
-       
+            <TextBlock Margin="0,16,0,16" x:Name="deviceName" Text="Unknown" Style="{StaticResource SubheaderTextBlockStyle}" />
 
-        
-
-        <TextBlock x:Name="stateTextBox" Margin="0,16,0,16"
-                   
-                   Text="Current Visual State" />
+            <TextBlock Margin="0,16,0,16" Text="Some test" Style="{StaticResource SubheaderTextBlockStyle}" />
        
         <Button x:Name="button1" Content="Launch Camera" RelativePanel.AlignLeftWith="parameterResizer"
              HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="128"  Click="button1_Click"/>
