@@ -76,7 +76,7 @@ namespace XboxSamples
 
             // Disable mouse control
             if (RemoveSafeArea != null && (bool)RemoveSafeArea == true)
-                Utility.removeSafeArea();
+                Utility.RemoveSafeArea();
             
 
             // long-running startup tasks go here

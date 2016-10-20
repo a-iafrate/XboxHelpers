@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
 namespace XboxHelpers.Common
@@ -26,7 +27,7 @@ namespace XboxHelpers.Common
         {
             try
             {
-                app.RequiresPointerMode = Windows.UI.Xaml.ApplicationRequiresPointerMode.Auto;
+                app.RequiresPointerMode = ApplicationRequiresPointerMode.Auto;
                 return true;
             }
             catch
@@ -53,9 +54,9 @@ namespace XboxHelpers.Common
 
         }
 
-       public static void removeSafeArea()
+       public static void RemoveSafeArea()
         {
-            Windows.UI.ViewManagement.ApplicationView.GetForCurrentView().SetDesiredBoundsMode(Windows.UI.ViewManagement.ApplicationViewBoundsMode.UseCoreWindow);
+            ApplicationView.GetForCurrentView().SetDesiredBoundsMode(ApplicationViewBoundsMode.UseCoreWindow);
         }
 
     }
